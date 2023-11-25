@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { DeckType } from './decks-reducer.ts'
 
 export const instance = axios.create({
@@ -11,6 +11,9 @@ export const instance = axios.create({
 export const decksAPI = {
   getdecks(){
     return instance.get<ResponseType>('decks')
+  },
+  addDeck(payload: AddRequestType){
+    return instance.post<DeckType, AxiosResponse<DeckType>, AddRequestType>('decks', payload)
   }
 }
 
@@ -27,6 +30,12 @@ type Pagination = {
   itemsPerPage: number
   totalPages: number
   totalItems: number
+}
+
+export type AddRequestType = {
+  cover?: string
+  name:string
+  isPrivate?: boolean
 }
 
 
