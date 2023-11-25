@@ -1,7 +1,8 @@
 import s from './DeckItem.module.css'
+import { DeckType } from '../../decks-reducer.ts'
 
 type DeckProps = {
-  deck: any // todo: fix
+  deck: DeckType
 }
 
 const TEST_ACC_NAME = 'testName'

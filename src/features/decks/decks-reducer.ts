@@ -1,5 +1,4 @@
-import { Dispatch } from 'react'
-import { decksAPI } from './decks-api.ts'
+
 
 const initialState = {
   decks: [] as DeckType[], // todo: add type
@@ -40,14 +39,4 @@ export type DeckType = {
 }
 
 //AC
-const SetDecksAC = (decks: DeckType[]) => ({ type: 'SET-DECKS', decks })
-
-
-
-//TC
-export const GetDecksTC = () => (dispatch: Dispatch) => {
-  decksAPI.getdecks()
-    .then(res => {
-      dispatch(SetDecksAC(res.data.items))
-    })
-}
+export const SetDecksAC = (decks: DeckType[]) => ({ type: 'SET-DECKS' as const, decks })
